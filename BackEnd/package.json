@@ -1,0 +1,19 @@
+{
+  "name": "server_personal_site",
+  "version": "1.0.0",
+  "description": "Personal Site server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theivanluk/PersonalSite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theivanluk/PersonalSite/issues"
+  },
+  "homepage": "https://github.com/theivanluk/PersonalSite#readme"
+}
