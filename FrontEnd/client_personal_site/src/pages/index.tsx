@@ -2,10 +2,19 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
+import axios from 'axios';
+import {useState} from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const [test, setTest] = useState('');
+
+  axios.get('http://localhost:8000/')
+    .then((res) => { setTest(res.data) })
+    .catch(err => console.log(err));
+
   return (
     <>
       <Head>
@@ -17,7 +26,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <p>
-            Get started by editing&nbsp;
+            Get started by {String(test)}&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
           </p>
           <div>
