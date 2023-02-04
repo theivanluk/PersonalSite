@@ -51,7 +51,7 @@ export const aboutMeSeed = [
   }
 ]
 
-export const contactMeSeed = [
+export const contactInfoSeed = [
   {
     name: "Ivan Luk",
     displaypic: "dp_placeholder",
@@ -59,5 +59,26 @@ export const contactMeSeed = [
     email: "luk.ivan.mech@gmail.com",
     linkedin: "https://www.linkedin.com/in/lukivan/",
     github: "https://github.com/theivanluk"
+  }
+]
+
+export const userInfoSeed = [
+  {
+    username: 'user1',
+    password: 'password1',
+    email: 'user1@user1.com',
+    date: new Date()
+  },
+  {
+    username: 'user2',
+    password: 'password2',
+    email: 'user2@user2.com',
+    date: new Date()
+  },
+  {
+    username: 'user3',
+    password: 'password3',
+    email: 'user3@user3.com',
+    date: new Date()
   }
 ]

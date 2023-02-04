@@ -1,8 +1,8 @@
 type BlogInput = [string, string, string, Date];
 type ProjectsInput = [string, string, string, Date, string];
 type AboutMeInput = [string, Date, string];
-type ContactInfoInput = [string, string, string, string, string,];
-type UserInfoInput = [string, string, string];
+type ContactInfoInput = [string, string, string, string, string, string];
+type UserInfoInput = [string, string, string, Date];
 
 
 export const insert = {
