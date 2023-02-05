@@ -1,35 +1,51 @@
 import { pgsql } from "./postgresConnection";
+import dotenv from 'dotenv';
 
 import { blogSeed, projectSeed, aboutMeSeed, contactInfoSeed, userInfoSeed } from "./seedData";
 import { insert } from "./queryString";
-import { link } from "fs";
 
-for (const seed of blogSeed) {
-  const { postTitle, picture, blog, date_posted } = seed;
-  pgsql.query(insert.to.Blog([postTitle, picture, blog, date_posted]))
-    .catch(e => console.log(`Error inserting into blog_post: ${e}`))
-}
+dotenv.config();
 
-for (const seed of projectSeed) {
-  const { project_name, project_description, project_url, project_updated, project_pic } = seed;
-  pgsql.query(insert.to.Projects([project_name, project_description, project_url, project_updated, project_pic]))
-    .catch(e => console.log(`Error inserting into projects: ${e}`))
-}
+(async function(): Promise<void> {
 
-for (const seed of aboutMeSeed) {
-  const { description, lastupdated, displaypic } = seed;
-  pgsql.query(insert.to.AboutMe([description, lastupdated, displaypic]))
-    .catch(e => console.log(`Error inserting into about_me: ${e}`))
-}
+  for await (const seed of blogSeed) {
+    await pgsql.query(insert.to.Blog(seed))
+      .then(() => {
+        console.log(insert.to.Blog(seed))
+      })
+      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+  }
 
-for (const seed of contactInfoSeed) {
-  const { name, displaypic, phone, email, linkedin, github } = seed;
-  pgsql.query(insert.to.ContactInfo([name, displaypic, phone, email, linkedin, github]))
-    .catch(e => console.log(`Error inserting into contact_info: ${e}`))
-}
+  for await (const seed of projectSeed) {
+    await pgsql.query(insert.to.Projects(seed))
+      .then(() => {
+        console.log(insert.to.Projects(seed))
+      })
+      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+  }
 
-for (const seed of userInfoSeed) {
-  const { username, password, email, date } = seed;
-  pgsql.query(insert.to.UserInfo([username, password, email, date]))
-    .catch(e => console.log(`Error inserting into user_info: ${e}`))
-}
+  for await (const seed of aboutMeSeed) {
+    await pgsql.query(insert.to.AboutMe(seed))
+      .then(() => {
+        console.log(insert.to.AboutMe(seed))
+      })
+      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+  }
+
+  for await (const seed of contactInfoSeed) {
+    await pgsql.query(insert.to.ContactInfo(seed))
+      .then(() => {
+        console.log(insert.to.ContactInfo(seed))
+      })
+      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+  }
+
+  for await (const seed of userInfoSeed) {
+    await pgsql.query(insert.to.UserInfo(seed))
+      .then(() => {
+        console.log(insert.to.UserInfo(seed))
+      })
+      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+  }
+
+})();
