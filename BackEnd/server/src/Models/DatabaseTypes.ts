@@ -1,22 +1,22 @@
-export type BlogInput = {
+export type BlogModel = {
   postTitle: string,
   picture: string,
   blog: string,
   date_posted: string
 };
-export type ProjectsInput = {
+export type ProjectsModel = {
   project_name: string,
   project_description: string,
   project_url: string,
   project_updated: string,
   project_pic: string
 }
-export type AboutMeInput = {
+export type AboutMeModel = {
   description: string,
   lastupdated: string,
   displaypic: string
 };
-export type ContactInfoInput = {
+export type ContactInfoModel = {
   name: string,
   displaypic: string,
   phone: string,
@@ -24,7 +24,7 @@ export type ContactInfoInput = {
   linkedin: string,
   github: string
 };
-export type UserInfoInput =   {
+export type UserInfoModel =   {
   username: string,
   password: string,
   email: string,

@@ -1,8 +1,9 @@
-import { BlogInput, ProjectsInput, AboutMeInput, ContactInfoInput, UserInfoInput} from './../Models/DatabaseTypes'
+import path from 'path';
+import { BlogModel, ProjectsModel, AboutMeModel, ContactInfoModel, UserInfoModel} from './../Models/DatabaseTypes'
 
 export const insert = {
   to: {
-    Blog: (blogInput: BlogInput): string => {
+    Blog: (blogInput: BlogModel): string => {
       const { postTitle, picture, blog, date_posted } = blogInput;
       return `
         INSERT INTO
@@ -11,7 +12,7 @@ export const insert = {
           ('${postTitle}','${picture}','${blog}','${date_posted}')
       `
     },
-    Projects: (projectInput: ProjectsInput): string => {
+    Projects: (projectInput: ProjectsModel): string => {
       const { project_name, project_description, project_url, project_updated, project_pic} = projectInput;
       return `
         INSERT INTO
@@ -20,7 +21,7 @@ export const insert = {
           ('${project_name}', '${project_description}', '${project_url}', '${project_updated}', '${project_pic}')
       `
     },
-    AboutMe: (aboutMeInput: AboutMeInput): string => {
+    AboutMe: (aboutMeInput: AboutMeModel): string => {
       const {description, lastupdated, displaypic} = aboutMeInput;
       return `
         INSERT INTO
@@ -29,7 +30,7 @@ export const insert = {
           ('${description}', '${lastupdated}', '${displaypic}')
       `
     },
-    ContactInfo: (contactMeInput: ContactInfoInput): string => {
+    ContactInfo: (contactMeInput: ContactInfoModel): string => {
       const { name, displaypic, phone, email, linkedin, github } = contactMeInput;
       return `
         INSERT INTO
@@ -38,7 +39,7 @@ export const insert = {
           ('${name}', '${displaypic}', '${phone}', '${email}','${linkedin}','${github}')
       `
     },
-    UserInfo: (userInfoInput: UserInfoInput): string => {
+    UserInfo: (userInfoInput: UserInfoModel): string => {
       const { username, password, email, date_joined} = userInfoInput;
       return `
         INSERT INTO
@@ -50,18 +51,48 @@ export const insert = {
   }
 }
 
-export const get = {
-  from: {
-
-  }
-}
-
 export const getAll = {
-  from: {
-    Blog: '',
-    Projects: '',
-    AboutMe: '',
-    ContactInfo: '',
-    UserInfo: ''
+  by: {
+    mostRecent: {
+      Blog: (pages: number = 1, limit: number = 5): string => `
+        SELECT
+          *
+        FROM
+          blog_post
+        ORDER BY
+          date_posted DESC
+        LIMIT ${limit} OFFSET ${limit * (pages - 1)}
+        `,
+      Projects: (pages: number = 1, limit: number = 5): string => `
+        SELECT
+          *
+        FROM
+          blog_post
+        ORDER BY
+          date_posted DESC
+        LIMIT ${limit} OFFSET ${limit * (pages - 1)}
+        `,
+      AboutMe: (): string => `
+        SELECT
+          *
+        FROM
+          about_me
+        `,
+      ContactInfo: (): string => `
+        SELECT
+          *
+        FROM
+          contact_info
+        `,
+      UserInfo: (pages: number = 1, limit: number = 5): string => `
+        SELECT
+          *
+        FROM
+          user_info
+        ORDER BY
+          username ASC
+        LIMIT ${limit} OFFSET ${limit * (pages - 1)}
+        `,
+    }
   }
 }
