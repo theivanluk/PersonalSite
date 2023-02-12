@@ -1,18 +1,18 @@
 export const blogSeed = [
   {
-    postTitle: "Test Blog 1",
+    post_title: "Test Blog 1",
     picture: "placeholder_url_1",
     blog: "Test Blog 1 content",
     date_posted: (new Date()).toISOString()
   },
   {
-    postTitle: "Test Blog 2",
+    post_title: "Test Blog 2",
     picture: "placeholder_url_2",
     blog: "Test Blog 2 content",
     date_posted: (new Date()).toISOString()
   },
   {
-    postTitle: "Test Blog 3",
+    post_title: "Test Blog 3",
     picture: "placeholder_url_3",
     blog: "Test Blog 3 content",
     date_posted: (new Date()).toISOString()

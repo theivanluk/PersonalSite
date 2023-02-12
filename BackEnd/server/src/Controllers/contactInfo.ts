@@ -1,17 +1,35 @@
 import { Request, Response } from 'express';
 
-export function get (req: Request, res: Response): void {
+import { ContactInfoDAO } from './../DataAccess/contactInfo';
 
+export async function get (req: Request, res: Response): Promise<void> {
+  try {
+
+  } catch(err) {
+
+  }
 }
 
-export function post (req: Request, res: Response): void {
+export async function post (req: Request, res: Response): Promise<void> {
+  try {
 
+  } catch(err) {
+
+  }
 }
 
-export function put (req: Request, res: Response): void {
+export async function put (req: Request, res: Response): Promise<void> {
+  try {
 
+  } catch(err) {
+
+  }
 }
 
-export function del (req: Request, res: Response): void {
+export async function del (req: Request, res: Response): Promise<void> {
+  try {
 
+  } catch(err) {
+
+  }
 }

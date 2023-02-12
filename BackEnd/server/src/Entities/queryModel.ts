@@ -1,14 +1,14 @@
-import { BlogModel, ProjectsModel, AboutMeModel, ContactInfoModel, UserInfoModel} from './DatabaseTypes'
+import { BlogModel, ProjectsModel, AboutMeModel, ContactInfoModel, UserInfoModel, BlogFields, ContactInfoFields, AboutMeFields, ProjectFields } from './DatabaseTypes'
 
 export const insert = {
   to: {
     Blog: (blogInput: BlogModel): string => {
-      const { postTitle, picture, blog, date_posted } = blogInput;
+      const { post_title, picture, blog, date_posted } = blogInput;
       return `
         INSERT INTO
           blog_post (post_title, picture, blog, date_posted)
         VALUES
-          ('${postTitle}','${picture}','${blog}','${date_posted}')
+          ('${post_title}','${picture}','${blog}','${date_posted}')
       `
     },
     Projects: (projectInput: ProjectsModel): string => {
@@ -95,3 +95,38 @@ export const getAll = {
     }
   }
 }
+
+export const update = {
+  blogPost: (id: number, field: BlogFields, data: string): string => `
+    UPDATE
+      blog_post
+    SET
+      ${field} = ${data}
+    WHERE post_id = ${id}
+  `,
+  ContactInfo: (id: number, field: ContactInfoFields, data: string): string => `
+    UPDATE
+      contact_info
+    SET
+      ${field} = ${data}
+    WHERE id = ${id}
+  `,
+  AboutMe: (id: number, field: AboutMeFields, data: string): string => `
+    UPDATE
+      about_me
+    SET
+      ${field} = ${data}
+    WHERE id = ${id}
+  `,
+  Projects: (id: number, field: ProjectFields, data: string): string => `
+    UPDATE
+      projects
+    SET
+      ${field} = ${data}
+    WHERE id = ${id}
+  `
+};
+
+export const del = {
+
+};

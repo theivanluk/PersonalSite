@@ -2,7 +2,7 @@ import { pgsql } from "./postgresConnection";
 import dotenv from 'dotenv';
 
 import { blogSeed, projectSeed, aboutMeSeed, contactInfoSeed, userInfoSeed } from "./seedData";
-import { insert } from "../Models/queryModel";
+import { insert } from "../Entities/queryModel";
 
 dotenv.config();
 

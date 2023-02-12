@@ -2,9 +2,9 @@ import { QueryResult } from 'pg';
 
 import { BlogFields, BlogModel } from '../Entities/DatabaseTypes'
 import { insert, getAll, update } from '../Entities/queryModel';
-import { pgsql } from './../Database/postgresConnection';
+import { pgsql } from '../Database/postgresConnection';
 
-export class BlogDAO { // inherit interface for loosely coupled
+export class BlogDAO {
 
   isBlogModel(input: any): input is BlogModel {
     return (

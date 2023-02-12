@@ -1,5 +1,5 @@
 export type BlogModel = {
-  postTitle: string,
+  post_title: string,
   picture: string,
   blog: string,
   date_posted: string
@@ -30,3 +30,13 @@ export type UserInfoModel =   {
   email: string,
   date_joined: string
 }
+
+export type BlogFields = 'post_title' | 'picture' | 'blog';
+
+export type ContactInfoFields = 'displaypic' | 'phone' | 'email' | 'linkedin' | 'github';
+
+export type AboutMeFields = 'description' | 'displaypic';
+
+export type UserInfoFields = 'username' | 'password' | 'email';
+
+export type ProjectFields = 'project_name' | 'project_description' | 'project_url' | 'project_pic';
