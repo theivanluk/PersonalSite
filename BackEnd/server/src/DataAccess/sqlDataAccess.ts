@@ -1,7 +1,7 @@
 import IDataAccess from "./iDataAccess"
 
 import { pgsql } from "./../Database/postgresConnection";
-import { insert, getAll, update } from '../Entities/queryModel';
+import { insert, getAll, update, del } from '../Entities/queryModel';
 import { BlogFields, BlogModel } from "../Entities/DatabaseTypes";
 
 export default class SQLDataAcceess implements IDataAccess {
@@ -29,7 +29,7 @@ export default class SQLDataAcceess implements IDataAccess {
   }
 
   async deleteBlogPost(id: number): Promise<void | undefined> {
-    await pgsql.query('');
+    await pgsql.query(del.by.id.blogPost(id));
   }
 
   //////////////////// PROJECTS ////////////////////

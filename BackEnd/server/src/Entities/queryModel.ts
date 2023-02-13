@@ -138,5 +138,13 @@ export const update = {
 };
 
 export const del = {
-
+  by: {
+    id: {
+      blogPost: (id: number): string => `
+        DELETE FROM
+          blog_post
+        WHERE post_id = ${id}
+      `
+    }
+  }
 };
