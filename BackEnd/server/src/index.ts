@@ -1,23 +1,12 @@
-import express, { Express } from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
+import { Application } from 'express';
 import dotenv from 'dotenv';
 
-import { router } from './routes';
+import { createApp } from './app';
+import SQLDataAccess from './DataAccess/sqlDataAccess'
 
 dotenv.config();
 
-const corsOptions = {
-  origin: '*',
-  credentials: true,
-}
+const app: Application = createApp(new SQLDataAccess);
+const port = process.env.PORT || 8000;
 
-const app: Express = express();
-
-app.use(morgan('dev'));
-app.use(cors(corsOptions));
-app.use(express.json());
-
-app.use('/', router);
-
-app.listen(process.env.PORT, () => console.log(`Listening on Port: ${process.env.PORT}`));
+app.listen(port, () => console.log(`Listening on Port: ${port}`));

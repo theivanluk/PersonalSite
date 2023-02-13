@@ -31,7 +31,9 @@ export type UserInfoModel =   {
   date_joined: string
 }
 
-export type BlogFields = 'post_title' | 'picture' | 'blog';
+export const allBlogFields = ['post_title', 'picture', 'blog'] as const;
+type BlogFieldsTuple = typeof allBlogFields;
+export type BlogFields = BlogFieldsTuple[number];
 
 export type ContactInfoFields = 'displaypic' | 'phone' | 'email' | 'linkedin' | 'github';
 

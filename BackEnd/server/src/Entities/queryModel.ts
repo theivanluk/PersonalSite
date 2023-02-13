@@ -92,6 +92,16 @@ export const getAll = {
           username ASC
         LIMIT ${limit} OFFSET ${limit * (pages - 1)}
         `,
+    },
+    id: {
+      Blog: (id: number): string => `
+        SELECT
+          *
+        FROM
+          blog_post
+        WHERE
+          post_id = ${id}
+      `
     }
   }
 }

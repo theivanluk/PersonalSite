@@ -6,9 +6,10 @@ const Blogs = new BlogDAO();
 export async function get (req: Request, res: Response): Promise<void> {
   try {
     const Blogs = new BlogDAO();
-    const page = req.query;
-    if (typeof page !== 'number') throw Error();
-    const data = await Blogs.getBlogPosts(page);
+    let { page } = req.query;
+    const pageNum = Number(page);
+    if (typeof pageNum !== 'number') throw Error('invalid query');
+    const data = await Blogs.getBlogPosts(pageNum);
     res.status(200).json(data);
   } catch(err) {
     console.log(err);

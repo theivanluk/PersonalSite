@@ -1,18 +1,8 @@
 import { Router } from 'express';
 
-import { blog, projects, aboutMe, contactInfo, userInfo } from './Controllers';
+import { projects, aboutMe, contactInfo, userInfo } from './Controllers';
 
 export const router: Router = Router();
-
-///////////////////////////// BLOG /////////////////////////////
-
-router.get('/blog', blog.get);
-
-router.post('/blog', blog.post);
-
-router.put('./blog', blog.put);
-
-router.delete('./blog', blog.del);
 
 ///////////////////////////// PROJECTS /////////////////////////////
 

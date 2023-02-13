@@ -1,5 +1,5 @@
-import { pgsql } from "../src/Database/postgresConnection"
-import { insert, getAll } from "../src/Entities/queryModel"
+import { pgsql } from "./../Database/postgresConnection"
+import { insert, getAll } from "./../Entities/queryModel"
 
 type Test = {
   testing1: string,
