@@ -29,7 +29,8 @@ export default class SQLDataAcceess implements IDataAccess {
   }
 
   async deleteBlogPost(id: number): Promise<void | undefined> {
-    await pgsql.query(del.by.id.blogPost(id));
+    const res = await pgsql.query(del.by.id.blogPost(id));
+    console.log(res);
   }
 
   //////////////////// PROJECTS ////////////////////

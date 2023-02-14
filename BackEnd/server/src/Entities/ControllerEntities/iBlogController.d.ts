@@ -1,5 +1,5 @@
+import IDataAccess from '@/DataAccess/iDataAccess';
 import { Request, Response } from 'express';
-import { getEnabledCategories } from 'trace_events';
 
 export default interface IBlogController {
   getBlogs(req: Request, res: Response): Promise<void>;

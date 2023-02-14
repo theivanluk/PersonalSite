@@ -3,7 +3,7 @@ import { Router } from "express";
 
 const router = Router();
 
-export default function createBlogRoutes (blogController: IBlogController) {
+export default function createBlogRoutes (blogController: IBlogController): Router {
 
   router.get('/blog', blogController.getBlogs);
 

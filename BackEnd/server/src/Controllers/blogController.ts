@@ -4,6 +4,8 @@ import IDataAccess from "./../DataAccess/iDataAccess";
 import IBlogController from "../Entities/ControllerEntities/iBlogController";
 import { allBlogFields, BlogFields, BlogModel } from '../Entities/DatabaseTypes';
 
+// refactored to class in my attempt for dependency injection of data access.
+
 export default class BlogController implements IBlogController {
   private dataAccess: IDataAccess;
 
@@ -123,7 +125,7 @@ export default class BlogController implements IBlogController {
       const { id } = req.params;
       if (isNaN(Number(id))) throw Error('Bad Request');
       await this.dataAccess.deleteBlogPost(Number(id));
-      res.status(200);
+      res.sendStatus(200);
     } catch(err: any) {
       switch (err.message) {
         case 'Bad Request':
