@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import IProjectController from "@/Entities/ControllerEntities/iProjectController";
 import IDataAccess from "@/DataAccess/iDataAccess";
 import { allProjectFields, ProjectFields, ProjectsModel } from "@/Entities/DatabaseTypes";
-import { del } from "./aboutMe";
+import { ValidationError, QueryError, handleControllerError } from "@/Entities/ErrorEntities";
 
 export default class ProjectController implements IProjectController {
   private dataAccess: IDataAccess;
@@ -31,40 +31,40 @@ export default class ProjectController implements IProjectController {
     return allProjectFields.includes(input as ProjectFields);
   }
 
-  async getProjects(req: Request, res: Response): Promise<void> {
+  public async getProjects(req: Request, res: Response): Promise<void> {
     try {
       const { page } = req.query;
-      if (isNaN(Number(page))) throw Error();
+      if (isNaN(Number(page))) throw new ValidationError();
       const data = await this.dataAccess.getProjects(Number(page));
       res.status(200).json(data);
     } catch(err) {
-
+      handleControllerError(err, res);
     }
   }
 
-  async getProjectById(req: Request, res: Response): Promise<void> {
+  public async getProjectById(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
-      if (isNaN(Number(id))) throw Error();
+      if (isNaN(Number(id))) throw new ValidationError();
       const data = await this.dataAccess.getProject(Number(id));
-      if (data.length === 0) throw Error;
+      if (data.length === 0) throw new QueryError()
       res.status(200).json(data);
     } catch(err) {
-
+      handleControllerError(err, res);
     }
   }
 
-  async insertProject(req: Request, res: Response): Promise<void> {
+  public async insertProject(req: Request, res: Response): Promise<void> {
     try {
-      if (!this.validateProjectsModel(req.body)) throw Error();
+      if (!this.validateProjectsModel(req.body)) throw new ValidationError();
       await this.dataAccess.insertProject(req.body);
       res.sendStatus(200);
     } catch(err) {
-
+      handleControllerError(err, res);
     }
   }
 
-  async updateProject(req: Request, res: Response): Promise<void> {
+  public async updateProject(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
       const { field, data } = req.body;
@@ -72,22 +72,22 @@ export default class ProjectController implements IProjectController {
         isNaN(Number(id)) ||
         this.validateProjectField(field) ||
         typeof data !== 'string'
-      ) throw Error();
+      ) throw new ValidationError();
       this.dataAccess.updateProject(Number(id), field, data);
       res.sendStatus(200);
     } catch(err) {
-
+      handleControllerError(err, res);
     }
   }
 
-  async deleteProject(req: Request, res: Response): Promise<void> {
+  public async deleteProject(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
-      if (isNaN(Number(id))) throw Error();
+      if (isNaN(Number(id))) throw new ValidationError();
       await this.dataAccess.deleteProject(Number(id));
       res.sendStatus(200);
     } catch(err) {
-
+      handleControllerError(err, res);
     }
   }
 }
