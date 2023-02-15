@@ -103,7 +103,7 @@ export default class BlogController implements IBlogController {
       if (!this.validateBlogField(field)) throw Error('Bad Request');
       if (typeof data !== 'string') throw Error('Bad Request');
       await this.dataAccess.updateBlogPost(Number(id), field, data);
-      res.status(200)
+      res.sendStatus(200)
     } catch(err: any) {
       switch (err.message) {
         case 'Bad Request':
