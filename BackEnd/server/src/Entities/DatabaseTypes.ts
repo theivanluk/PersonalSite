@@ -39,8 +39,14 @@ export const allProjectFields = ['project_name', 'project_description', 'project
 type ProjectFieldsTuple = typeof allProjectFields;
 export type ProjectFields = ProjectFieldsTuple[number];
 
-export type ContactInfoFields = 'displaypic' | 'phone' | 'email' | 'linkedin' | 'github';
+export const allContactInfoFields = ['displaypic', 'phone', 'email', 'linkedin', 'github'];
+type ContactInfoFieldsTuple = typeof allContactInfoFields;
+export type ContactInfoFields = ContactInfoFieldsTuple[number];
 
-export type AboutMeFields = 'description' | 'displaypic';
+export const allAboutMeFields = ['description', 'displaypic'];
+type AboutMeTuple = typeof allAboutMeFields;
+export type AboutMeFields = AboutMeTuple[number];
 
-export type UserInfoFields = 'username' | 'password' | 'email';
+export const allUserInfoFields = ['description', 'displaypic'];
+type UserInfoFieldsTuple = typeof allUserInfoFields
+export type UserInfoFields = UserInfoFieldsTuple[number];
