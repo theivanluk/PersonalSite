@@ -2,7 +2,7 @@ import IDataAccess from "./iDataAccess"
 
 import { pgsql } from "./../Database/postgresConnection";
 import { insert, getAll, update, del } from '../Entities/queryModel';
-import { BlogFields, BlogModel } from "../Entities/DatabaseTypes";
+import { AboutMeFields, AboutMeModel, BlogFields, BlogModel, ContactInfoFields, ContactInfoModel, ProjectFields, ProjectsModel } from "../Entities/DatabaseTypes";
 
 export default class SQLDataAcceess implements IDataAccess {
 
@@ -35,5 +35,59 @@ export default class SQLDataAcceess implements IDataAccess {
 
   //////////////////// PROJECTS ////////////////////
 
+  async getProjects(page: number):Promise<ProjectsModel[] | unknown> {
+    const { rows } : { rows: any[] } = await pgsql.query(getAll.by.mostRecent.Projects(page));
+    const data = <ProjectsModel[]> rows;
+    return data;
+  }
 
+  async getProject(id: number): Promise<ProjectsModel | unknown> {
+    const { rows } : { rows: any[] } = await pgsql.query(getAll.by.id.Project(id));
+    const data = <ProjectsModel[]> rows;
+    return data;
+  }
+
+  async insertProject(projectInput: ProjectsModel): Promise<void | undefined> {
+    await pgsql.query(insert.to.Projects(projectInput));
+  }
+
+  async updateProject(id: number, field: ProjectFields, data: string): Promise<void | undefined> {
+    await pgsql.query(update.Projects(id, field, data));
+  }
+
+  async deleteProject(id: number): Promise<void | undefined> {
+    await pgsql.query(del.by.id.Projects(id));
+  }
+
+  //////////////////// ABOUTME ////////////////////
+
+  async getAboutMe(): Promise<AboutMeModel[] | unknown> {
+    const { rows } : { rows: any[] } = await pgsql.query(getAll.by.mostRecent.AboutMe());
+    const data = <AboutMeModel[]> rows;
+    return data;
+  }
+
+  async insertAboutMe(aboutMeInput: AboutMeModel): Promise<void | undefined> {
+    await pgsql.query(insert.to.AboutMe(aboutMeInput));
+  }
+
+  async updateAboutMe(field: AboutMeFields, data: string): Promise<void | undefined> {
+    await pgsql.query(update.AboutMe(field, data))
+  }
+
+  //////////////////// CONTACTINFO ////////////////////
+
+  async getContactInfo(): Promise<ContactInfoModel[] | unknown> {
+    const { rows } : { rows: any[] } = await pgsql.query(getAll.by.mostRecent.ContactInfo())
+    const data = <ContactInfoModel[]> rows;
+    return data;
+  }
+
+  async insertContactInfo(contactInfoInput: ContactInfoModel): Promise<void | undefined> {
+    await pgsql.query(insert.to.ContactInfo(contactInfoInput));
+  }
+
+  async updateContactInfo(field: ContactInfoFields, data: string): Promise<void | undefined> {
+    await pgsql.query(update.ContactInfo(field, data));
+  }
 }

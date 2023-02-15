@@ -35,10 +35,12 @@ export const allBlogFields = ['post_title', 'picture', 'blog'] as const;
 type BlogFieldsTuple = typeof allBlogFields;
 export type BlogFields = BlogFieldsTuple[number];
 
+export const allProjectFields = ['project_name', 'project_description', 'project_url', 'project_pic'];
+type ProjectFieldsTuple = typeof allProjectFields;
+export type ProjectFields = ProjectFieldsTuple[number];
+
 export type ContactInfoFields = 'displaypic' | 'phone' | 'email' | 'linkedin' | 'github';
 
 export type AboutMeFields = 'description' | 'displaypic';
 
 export type UserInfoFields = 'username' | 'password' | 'email';
-
-export type ProjectFields = 'project_name' | 'project_description' | 'project_url' | 'project_pic';

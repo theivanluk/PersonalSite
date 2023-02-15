@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import IProjectController from "@/Entities/ControllerEntities/iProjectController";
 import IDataAccess from "@/DataAccess/iDataAccess";
-import { ParamsDictionary } from "express-serve-static-core";
-import { ParsedQs } from "qs";
 
 export default class ProjectController implements IProjectController {
   private dataAccess: IDataAccess;
@@ -19,7 +17,10 @@ export default class ProjectController implements IProjectController {
 
   async getProjects(req: Request, res: Response): Promise<void> {
     try {
-
+      const { page } = req.query;
+      if (isNaN(Number(page))) throw Error();
+      const data = await this.dataAccess.getProjects(Number(page));
+      res.status(200).json(data);
     } catch(err) {
 
     }

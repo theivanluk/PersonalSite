@@ -101,6 +101,14 @@ export const getAll = {
           blog_post
         WHERE
           post_id = ${id}
+      `,
+      Project: (id: number): string => `
+        SELECT
+          *
+        FROM
+          projects
+        WHERE
+          project_id = ${id}
       `
     }
   }
@@ -114,19 +122,19 @@ export const update = {
       ${field} = ${data}
     WHERE post_id = ${id}
   `,
-  ContactInfo: (id: number, field: ContactInfoFields, data: string): string => `
+  ContactInfo: (field: ContactInfoFields, data: string): string => `
     UPDATE
       contact_info
     SET
       ${field} = ${data}
-    WHERE id = ${id}
+    WHERE id = 1
   `,
-  AboutMe: (id: number, field: AboutMeFields, data: string): string => `
+  AboutMe: (field: AboutMeFields, data: string): string => `
     UPDATE
       about_me
     SET
       ${field} = ${data}
-    WHERE id = ${id}
+    WHERE id = 1
   `,
   Projects: (id: number, field: ProjectFields, data: string): string => `
     UPDATE
@@ -143,7 +151,14 @@ export const del = {
       blogPost: (id: number): string => `
         DELETE FROM
           blog_post
-        WHERE post_id = ${id}
+        WHERE
+          post_id = ${id}
+      `,
+      Projects: (id: number): string => `
+        DELETE FROM
+          projects
+        WHERE
+          project_id = ${id}
       `
     }
   }
