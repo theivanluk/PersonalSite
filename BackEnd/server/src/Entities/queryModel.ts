@@ -163,3 +163,18 @@ export const del = {
     }
   }
 };
+
+export const getNumRowsFor = {
+  blogPost: () => `
+    SELECT count(*) from blog_post
+  `,
+  Projects: () => `
+    SELECT count(*) from projects
+  `,
+  ContactInfo: () => `
+    SELECT count(*) from contact_info
+  `,
+  AboutMe: () => `
+    SELECT count(*) from about_me
+  `
+}

@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import IDataAccess from '@/DataAccess/iDataAccess';
 import IAboutMeController from '@/Entities/ControllerEntities/iAboutMeController';
 import { AboutMeModel, AboutMeFields, allAboutMeFields } from '@/Entities/DatabaseTypes';
-import { ValidationError, QueryError, handleControllerError } from '@/Entities/ErrorEntities';
+import { ValidationError, QueryError, handleControllerError, ForbiddenError } from '@/Entities/ErrorEntities';
 
 export default class AboutMeCntroller implements IAboutMeController {
   private dataAccess: IDataAccess;
@@ -36,7 +36,7 @@ export default class AboutMeCntroller implements IAboutMeController {
   public async insertAboutMe(req: Request, res: Response): Promise<void> {
     try {
       if (!this.validateAboutMeModel(req.body)) throw new ValidationError();
-      // Validate database size;
+      if (await this.dataAccess.getAboutMeSize() !== 0) throw new ForbiddenError();
       await this.dataAccess.insertAboutMe(req.body);
       res.sendStatus(201);
     } catch(err) {

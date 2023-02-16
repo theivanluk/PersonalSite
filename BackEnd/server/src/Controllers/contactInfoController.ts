@@ -1,7 +1,7 @@
 import IDataAccess from '@/DataAccess/iDataAccess';
 import IContactInfoController from '@/Entities/ControllerEntities/iContactInfoController';
 import { allContactInfoFields, ContactInfoFields, ContactInfoModel } from '@/Entities/DatabaseTypes';
-import { handleControllerError, ValidationError } from '@/Entities/ErrorEntities';
+import { ForbiddenError, handleControllerError, ValidationError } from '@/Entities/ErrorEntities';
 import { Request, Response } from 'express';
 
 export default class ContactInfoController implements IContactInfoController {
@@ -38,6 +38,7 @@ export default class ContactInfoController implements IContactInfoController {
   async insertContactInfo(req: Request, res: Response): Promise<void> {
     try {
       // validate database table size
+      if (await this.dataAccess.getContactInfoSize() !== 0) throw new ForbiddenError();
       if (!this.validateContactInfoModel(req.body)) throw new ValidationError();
       await this.dataAccess.insertContactInfo(req.body);
       res.sendStatus(201);

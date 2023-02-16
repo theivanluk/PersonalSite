@@ -26,11 +26,12 @@ export default interface IDataAccess {
   getAboutMe(): Promise<AboutMeModel[] | unknown>;
   insertAboutMe(aboutMeInput: AboutMeModel): Promise<void | unknown>;
   updateAboutMe(field: AboutMeFields, data: string): Promise<void | unknown>;
+  getAboutMeSize(): Promise<number | undefined>;
 
   ////////////////////// ContactInfo //////////////////////
 
   getContactInfo(): Promise<ContactInfoModel[] | unknown>;
   insertContactInfo(contactInfoInput: ContactInfoModel): Promise<void | unknown>;
   updateContactInfo(field: ContactInfoFields, data: string): Promise<void | unknown>;
-
+  getContactInfoSize(): Promise<number | undefined>;
 }

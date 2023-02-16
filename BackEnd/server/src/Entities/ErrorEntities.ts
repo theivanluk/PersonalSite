@@ -15,13 +15,34 @@ export class QueryError extends Error {
   }
 }
 
+export class AuthorizationError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "AuthorizationError";
+  }
+}
+
+export class ForbiddenError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "ForbiddenError";
+  }
+}
+
 export function handleControllerError(err: Error | any, res: Response): void {
   if (err instanceof ValidationError) {
     res.sendStatus(400);
   } else
   if (err instanceof QueryError) {
     res.sendStatus(204);
-  } else {
+  } else
+  if (err instanceof AuthorizationError) {
+    res.sendStatus(401);
+  } else
+  if (err instanceof ForbiddenError) {
+    res.sendStatus(403);
+  }
+  else {
     res.sendStatus(500);
   }
 }

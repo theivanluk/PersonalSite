@@ -1,7 +1,7 @@
 import IDataAccess from "./iDataAccess"
 
 import { pgsql } from "./../Database/postgresConnection";
-import { insert, getAll, update, del } from '../Entities/queryModel';
+import { insert, getAll, update, del, getNumRowsFor } from '../Entities/queryModel';
 import { AboutMeFields, AboutMeModel, BlogFields, BlogModel, ContactInfoFields, ContactInfoModel, ProjectFields, ProjectsModel } from "../Entities/DatabaseTypes";
 
 export default class SQLDataAcceess implements IDataAccess {
@@ -75,6 +75,12 @@ export default class SQLDataAcceess implements IDataAccess {
     await pgsql.query(update.AboutMe(field, data))
   }
 
+  async getAboutMeSize(): Promise<number | undefined> {
+    const { rows } : { rows: any[] } = await pgsql.query(getNumRowsFor.AboutMe());
+    const numRows = <number> rows[0];
+    return numRows;
+  }
+
   //////////////////// CONTACTINFO ////////////////////
 
   async getContactInfo(): Promise<ContactInfoModel[] | unknown> {
@@ -89,5 +95,11 @@ export default class SQLDataAcceess implements IDataAccess {
 
   async updateContactInfo(field: ContactInfoFields, data: string): Promise<void | undefined> {
     await pgsql.query(update.ContactInfo(field, data));
+  }
+
+  async getContactInfoSize(): Promise<number | undefined> {
+    const { rows }: { rows: any[] } = await pgsql.query(getNumRowsFor.ContactInfo());
+    const numRows = <number> rows[0];
+    return numRows;
   }
 }
