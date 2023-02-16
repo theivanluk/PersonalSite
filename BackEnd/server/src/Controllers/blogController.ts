@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import IDataAccess from "./../DataAccess/iDataAccess";
 import IBlogController from "../Entities/ControllerEntities/iBlogController";
 import { allBlogFields, BlogFields, BlogModel } from '../Entities/DatabaseTypes';
-import { handleControllerError, QueryError, ValidationError } from '@/Entities/ErrorEntities';
+import { handleControllerError, QueryError, ValidationError } from './../Entities/ErrorEntities';
 
 
 // refactored to class in my attempt for dependency injection of data access.

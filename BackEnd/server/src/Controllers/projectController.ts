@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import IProjectController from "@/Entities/ControllerEntities/iProjectController";
 import IDataAccess from "@/DataAccess/iDataAccess";
-import { allProjectFields, ProjectFields, ProjectsModel } from "@/Entities/DatabaseTypes";
-import { ValidationError, QueryError, handleControllerError } from "@/Entities/ErrorEntities";
+import { allProjectFields, ProjectFields, ProjectsModel } from "./../Entities/DatabaseTypes";
+import { ValidationError, QueryError, handleControllerError } from "./../Entities/ErrorEntities";
 
 export default class ProjectController implements IProjectController {
   private dataAccess: IDataAccess;
