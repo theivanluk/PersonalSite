@@ -1,4 +1,4 @@
-import { AboutMeFields, AboutMeModel, ContactInfoFields, ContactInfoModel, ProjectFields, ProjectsModel } from "@/Entities/DatabaseTypes";
+import { AboutMeFields, AboutMeModel, ContactInfoFields, ContactInfoModel, ProjectFields, ProjectsModel, UserInfoModel } from "@/Entities/DatabaseTypes";
 import { insert } from "@/Entities/queryModel";
 import { BlogFields } from "./Entities/DatabaseTypes";
 
@@ -34,4 +34,9 @@ export default interface IDataAccess {
   insertContactInfo(contactInfoInput: ContactInfoModel): Promise<void | unknown>;
   updateContactInfo(field: ContactInfoFields, data: string): Promise<void | unknown>;
   getContactInfoSize(): Promise<number | undefined>;
+
+  ////////////////////// UserInfo //////////////////////
+
+  getUsername(username: string): Promise<UserInfoModel[] | unknown>;
+
 }

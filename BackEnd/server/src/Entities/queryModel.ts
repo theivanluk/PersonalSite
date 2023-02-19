@@ -39,12 +39,12 @@ export const insert = {
       `
     },
     UserInfo: (userInfoInput: UserInfoModel): string => {
-      const { username, password, email, date_joined} = userInfoInput;
+      const { username, password, email, role, date_joined} = userInfoInput;
       return `
         INSERT INTO
-          user_info (username, password, email, date_joined)
+          user_info (username, password, email, role, date_joined)
         VALUES
-          ('${username}', '${password}', '${email}', '${date_joined}')
+          ('${username}', '${password}', '${email}', '${role}', '${date_joined}')
       `
     }
   }
@@ -110,7 +110,15 @@ export const getAll = {
         WHERE
           project_id = ${id}
       `
-    }
+    },
+    username: (username: string): string => `
+      SELECT
+        *
+      FROM
+        user_info
+      WHERE
+        username = '${username}'
+    `
   }
 }
 

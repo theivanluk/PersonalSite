@@ -21,7 +21,7 @@ dotenv.config();
       .then(() => {
         console.log(insert.to.Projects(seed))
       })
-      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+      .catch(e => console.log(`Error inserting into projects: ${e}`));
   }
 
   for await (const seed of aboutMeSeed) {
@@ -29,7 +29,7 @@ dotenv.config();
       .then(() => {
         console.log(insert.to.AboutMe(seed))
       })
-      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+      .catch(e => console.log(`Error inserting into aboutMe: ${e}`));
   }
 
   for await (const seed of contactInfoSeed) {
@@ -37,7 +37,7 @@ dotenv.config();
       .then(() => {
         console.log(insert.to.ContactInfo(seed))
       })
-      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+      .catch(e => console.log(`Error inserting into contactInfo: ${e}`));
   }
 
   for await (const seed of userInfoSeed) {
@@ -45,7 +45,7 @@ dotenv.config();
       .then(() => {
         console.log(insert.to.UserInfo(seed))
       })
-      .catch(e => console.log(`Error inserting into blog_post: ${e}`));
+      .catch(e => console.log(`Error inserting into userInfo: ${e}`));
   }
 
 })();

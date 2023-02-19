@@ -28,6 +28,7 @@ export type UserInfoModel =   {
   username: string,
   password: string,
   email: string,
+  role: UserRoles,
   date_joined: string
 }
 
@@ -50,3 +51,7 @@ export type AboutMeFields = AboutMeTuple[number];
 export const allUserInfoFields = ['description', 'displaypic'];
 type UserInfoFieldsTuple = typeof allUserInfoFields
 export type UserInfoFields = UserInfoFieldsTuple[number];
+
+const allUserRoles = ['User', 'Admin'];
+type UserRoleTuple = typeof allUserRoles;
+type UserRoles = UserRoleTuple[number];

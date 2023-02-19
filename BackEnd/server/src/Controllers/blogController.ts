@@ -59,8 +59,9 @@ export default class BlogController implements IBlogController {
 
   public async insertBlog(req: Request, res: Response): Promise<void> {
     try {
-      if (!this.validateBlogModel(req.body)) throw new ValidationError();
-      await this.dataAccess.insertBlogPost(req.body);
+      console.log(req.session);
+      // if (!this.validateBlogModel(req.body)) throw new ValidationError();
+      // await this.dataAccess.insertBlogPost(req.body);
       res.sendStatus(201);
     } catch(err: any) {
       handleControllerError(err, res);

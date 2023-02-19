@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 
 import IDataAccess from '@/DataAccess/iDataAccess';
-import IAboutMeController from '@/Entities/ControllerEntities/iAboutMeController';
-import { AboutMeModel, AboutMeFields, allAboutMeFields } from '@/Entities/DatabaseTypes';
-import { ValidationError, QueryError, handleControllerError, ForbiddenError } from '@/Entities/ErrorEntities';
+import IAboutMeController from './../Entities/ControllerEntities/iAboutMeController';
+import { AboutMeModel, AboutMeFields, allAboutMeFields } from './../Entities/DatabaseTypes';
+import { ValidationError, QueryError, handleControllerError, ForbiddenError } from './../Entities/ErrorEntities';
 
 export default class AboutMeCntroller implements IAboutMeController {
   private dataAccess: IDataAccess;

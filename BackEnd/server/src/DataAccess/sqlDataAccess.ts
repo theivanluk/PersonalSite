@@ -2,7 +2,7 @@ import IDataAccess from "./iDataAccess"
 
 import { pgsql } from "./../Database/postgresConnection";
 import { insert, getAll, update, del, getNumRowsFor } from '../Entities/queryModel';
-import { AboutMeFields, AboutMeModel, BlogFields, BlogModel, ContactInfoFields, ContactInfoModel, ProjectFields, ProjectsModel } from "../Entities/DatabaseTypes";
+import { AboutMeFields, AboutMeModel, BlogFields, BlogModel, ContactInfoFields, ContactInfoModel, ProjectFields, ProjectsModel, UserInfoModel } from "../Entities/DatabaseTypes";
 
 export default class SQLDataAcceess implements IDataAccess {
 
@@ -102,4 +102,13 @@ export default class SQLDataAcceess implements IDataAccess {
     const numRows = <number> rows[0];
     return numRows;
   }
+
+    //////////////////// USERINFO ////////////////////
+
+  async getUsername(username: string): Promise<UserInfoModel[] | undefined> {
+    const { rows }: { rows: any[] } = await pgsql.query(getAll.by.username(username));
+    const users = <UserInfoModel[]> rows;
+    return users;
+  }
+
 }

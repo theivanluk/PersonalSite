@@ -1,7 +1,7 @@
 import IDataAccess from '@/DataAccess/iDataAccess';
-import IContactInfoController from '@/Entities/ControllerEntities/iContactInfoController';
-import { allContactInfoFields, ContactInfoFields, ContactInfoModel } from '@/Entities/DatabaseTypes';
-import { ForbiddenError, handleControllerError, ValidationError } from '@/Entities/ErrorEntities';
+import IContactInfoController from './../Entities/ControllerEntities/iContactInfoController';
+import { allContactInfoFields, ContactInfoFields, ContactInfoModel } from './../Entities/DatabaseTypes';
+import { ForbiddenError, handleControllerError, ValidationError } from './../Entities/ErrorEntities';
 import { Request, Response } from 'express';
 
 export default class ContactInfoController implements IContactInfoController {

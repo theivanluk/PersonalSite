@@ -29,6 +29,13 @@ export class ForbiddenError extends Error {
   }
 }
 
+export class AuthenticationError extends Error {
+  constructor(message?: string) {
+    super(message);
+    this.name = "AuthenticationError";
+  }
+}
+
 export function handleControllerError(err: Error | any, res: Response): void {
   if (err instanceof ValidationError) {
     res.sendStatus(400);
@@ -41,6 +48,9 @@ export function handleControllerError(err: Error | any, res: Response): void {
   } else
   if (err instanceof ForbiddenError) {
     res.sendStatus(403);
+  } else
+  if (err instanceof AuthenticationError) {
+    res.sendStatus(401);
   }
   else {
     res.sendStatus(500);

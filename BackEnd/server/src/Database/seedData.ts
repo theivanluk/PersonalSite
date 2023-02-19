@@ -67,18 +67,21 @@ export const userInfoSeed = [
     username: 'user1',
     password: 'password1',
     email: 'user1@user1.com',
+    role: 'User',
     date_joined: (new Date()).toISOString()
   },
   {
     username: 'user2',
     password: 'password2',
     email: 'user2@user2.com',
+    role: 'User',
     date_joined: (new Date()).toISOString()
   },
   {
     username: 'user3',
     password: 'password3',
     email: 'user3@user3.com',
+    role: 'User',
     date_joined: (new Date()).toISOString()
   }
 ]
