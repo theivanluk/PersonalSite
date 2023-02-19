@@ -3,6 +3,7 @@ import IDataAccess from "./iDataAccess"
 import { pgsql } from "./../Database/postgresConnection";
 import { insert, getAll, update, del, getNumRowsFor } from '../Entities/queryModel';
 import { AboutMeFields, AboutMeModel, BlogFields, BlogModel, ContactInfoFields, ContactInfoModel, ProjectFields, ProjectsModel, UserInfoModel } from "../Entities/DatabaseTypes";
+import { stringify } from "querystring";
 
 export default class SQLDataAcceess implements IDataAccess {
 
@@ -111,4 +112,7 @@ export default class SQLDataAcceess implements IDataAccess {
     return users;
   }
 
+  async registerUser(userInfoInput: UserInfoModel):Promise<void | undefined> {
+    await pgsql.query(insert.to.UserInfo(userInfoInput));
+  }
 }

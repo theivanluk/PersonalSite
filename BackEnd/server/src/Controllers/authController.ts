@@ -1,7 +1,9 @@
+import formatUserInfo from "@/BusinessLogic/formatUserInfo";
 import IDataAccess from "@/DataAccess/iDataAccess";
 import IAuthController from "@/Entities/ControllerEntities/iAuthController";
+import { UserInfoModel } from "./../Entities/DatabaseTypes";
+import { handleControllerError } from "./../Entities/ErrorEntities";
 import { NextFunction, Request, Response } from "express";
-import { nextTick } from "process";
 
 
 export default class AuthController implements IAuthController {
@@ -9,13 +11,21 @@ export default class AuthController implements IAuthController {
 
   constructor(dataAccess: IDataAccess) {
     this.dataAccess = dataAccess
+
+    this.register = this.register.bind(this);
   }
 
   register(req: Request, res: Response): void {
-
+    try {
+      const { username, password, email } = req.body;
+      const user: UserInfoModel = formatUserInfo(username, password, email);
+      this.dataAccess.registerUser(user);
+    } catch(err) {
+      handleControllerError(err, res);
+    }
   }
 
-  logout (req: Request, res: Response, next: NextFunction): void {
+  logOut (req: Request, res: Response, next: NextFunction): void {
     req.logout(function(err) {
       if (err) { next(err) }
       else res.redirect('/blog?page=1')

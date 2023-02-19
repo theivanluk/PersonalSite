@@ -11,8 +11,9 @@ export default function createAuthRoutes(authController: IAuthController): Route
     failureRedirect: '/login'
   }));
 
-  router.post('/register');
+  router.post('/register', authController.register);
 
-  router.post('/logout', );
+  router.post('/logout', authController.logOut);
+
   return router
 }
