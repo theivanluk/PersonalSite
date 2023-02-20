@@ -112,7 +112,10 @@ export default class SQLDataAcceess implements IDataAccess {
     return users;
   }
 
-  async registerUser(userInfoInput: UserInfoModel):Promise<void | undefined> {
-    await pgsql.query(insert.to.UserInfo(userInfoInput));
+  async registerUser(userInfoInput: UserInfoModel):Promise<UserInfoModel | undefined> {
+    const { rows }: { rows: any[] } = await pgsql.query(insert.to.UserInfo(userInfoInput));
+    const data = <UserInfoModel> rows[0];
+    console.log(data, 'data');
+    return data
   }
 }

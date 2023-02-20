@@ -45,6 +45,7 @@ export const insert = {
           user_info (username, password, email, role, date_joined)
         VALUES
           ('${username}', '${password}', '${email}', '${role}', '${date_joined}')
+        RETURNING *
       `
     }
   }

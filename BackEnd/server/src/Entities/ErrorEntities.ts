@@ -50,6 +50,7 @@ export function handleControllerError(err: Error | any, res: Response): void {
     res.sendStatus(403);
   } else
   if (err instanceof AuthenticationError) {
+    // res.redirect('/auth/login');
     res.sendStatus(401);
   }
   else {

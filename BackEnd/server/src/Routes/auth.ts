@@ -6,10 +6,7 @@ import passport from 'passport';
 export default function createAuthRoutes(authController: IAuthController): Router {
   const router = Router();
 
-  router.post('/login', passport.authenticate('local', {
-    successRedirect: '/blog?page=1',
-    failureRedirect: '/login'
-  }));
+  router.post('/login', passport.authenticate('local'), authController.login);
 
   router.post('/register', authController.register);
 

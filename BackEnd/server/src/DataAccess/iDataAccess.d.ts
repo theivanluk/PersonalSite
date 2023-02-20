@@ -38,6 +38,6 @@ export default interface IDataAccess {
   ////////////////////// UserInfo //////////////////////
 
   getUsername(username: string): Promise<UserInfoModel[] | unknown>;
-  registerUser(userInfoInput: UserInfoModel): Promise<void | unknown>;
+  registerUser(userInfoInput: UserInfoModel): Promise<UserInfoModel | unknown>;
 
 }

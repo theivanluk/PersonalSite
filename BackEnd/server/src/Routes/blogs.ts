@@ -11,7 +11,7 @@ export default function createBlogRoutes (blogController: IBlogController): Rout
 
   router.get('/blog/:id', blogController.getBlogById);
 
-  router.post('/blog', isAuthenticated, isAuthorized,blogController.insertBlog);
+  router.post('/blog', isAuthenticated, isAuthorized, blogController.insertBlog);
 
   router.put('/blog/:id', isAuthenticated, isAuthorized, blogController.updateBlog);
 

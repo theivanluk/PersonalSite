@@ -32,6 +32,10 @@ export type UserInfoModel =   {
   date_joined: string
 }
 
+export type UserDatabaseModel = UserInfoModel & {
+  user_id: number
+}
+
 export const allBlogFields = ['post_title', 'picture', 'blog'] as const;
 type BlogFieldsTuple = typeof allBlogFields;
 export type BlogFields = BlogFieldsTuple[number];

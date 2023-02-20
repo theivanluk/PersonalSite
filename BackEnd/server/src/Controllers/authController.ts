@@ -1,9 +1,10 @@
-import formatUserInfo from "@/BusinessLogic/formatUserInfo";
+import formatUserInfo from "./../BusinessLogic/formatUserInfo";
 import IDataAccess from "@/DataAccess/iDataAccess";
 import IAuthController from "@/Entities/ControllerEntities/iAuthController";
-import { UserInfoModel } from "./../Entities/DatabaseTypes";
+import { UserDatabaseModel, UserInfoModel } from "./../Entities/DatabaseTypes";
 import { handleControllerError } from "./../Entities/ErrorEntities";
 import { NextFunction, Request, Response } from "express";
+import truncateUserInfo from "./../BusinessLogic/truncateUserInfo";
 
 
 export default class AuthController implements IAuthController {
@@ -15,13 +16,26 @@ export default class AuthController implements IAuthController {
     this.register = this.register.bind(this);
   }
 
-  register(req: Request, res: Response): void {
+  async login(req: Request, res: Response): Promise<void> {
+    try {
+      const user = <UserDatabaseModel> req.user;
+      res.status(200).json(truncateUserInfo(user));
+    } catch(err) {
+      res.sendStatus(500);
+    }
+  }
+
+  async register(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
       const { username, password, email } = req.body;
       const user: UserInfoModel = formatUserInfo(username, password, email);
-      this.dataAccess.registerUser(user);
+      const registeredUser = <UserInfoModel> await this.dataAccess.registerUser(user);
+      req.login(registeredUser, function(err) {
+        if (err) return next(err)
+        res.redirect('/blog?page=1');
+      })
     } catch(err) {
-      handleControllerError(err, res);
+      next(err);
     }
   }
 
@@ -31,4 +45,5 @@ export default class AuthController implements IAuthController {
       else res.redirect('/blog?page=1')
     })
   }
+
 }
