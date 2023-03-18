@@ -1,16 +1,11 @@
+import { BlogEntryEntity } from "../../Entities/BlogEntities";
 import { listenerCount } from "process";
 import React from "react";
 import BlogEntry from "./BlogEntry";
 
-interface BlogEntryEntity {
-  post_title: string,
-  post_id: number,
-  picture: string,
-  blog: string,
-  date_posted: string
-}
 
-const BlogList = ({ list = [] }: { list: BlogEntryEntity[]}) => {
+
+const BlogList = ({ list = [] }: { list: BlogEntryEntity[] | undefined }) => {
 
   return (
     <>
