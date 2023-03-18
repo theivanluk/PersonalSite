@@ -8,7 +8,7 @@ interface HeaderProps {
   name: String
 }
 
-const Header: React.FC<HeaderProps> = ({name}) => {
+const Header: FC<HeaderProps> = ({ name }) => {
 
   return (
     <>

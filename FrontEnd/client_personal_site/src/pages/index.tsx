@@ -4,8 +4,8 @@ import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import axios from 'axios';
 import { useState } from 'react';
-import NavBar from './../components/NavBar';
-import Layout from '@/components/Layout';
+import NavBar from './../components/Common/NavBar';
+import Layout from './../components/Common/Layout';
 
 
 export default function Home() {

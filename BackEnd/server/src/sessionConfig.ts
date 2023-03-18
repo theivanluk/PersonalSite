@@ -7,10 +7,13 @@ export const store = new session.MemoryStore();
 
 const sessionAgeMinutes = 5;
 const secretArray = <string[]> [
-  process.env.Session_secret_1,
-  process.env.Session_secret_2,
-  process.env.Session_secret_3,
-  process.env.Session_secret_4
+  process.env.SESSION_SECRET_1,
+  process.env.SESSION_SECRET_2,
+  process.env.SESSION_SECRET_3,
+  process.env.SESSION_SECRET_4,
+  process.env.SESSION_SECRET_5,
+  process.env.SESSION_SECRET_6,
+  process.env.SESSION_SECRET_7
 ];
 
 export const rotateSession = () => {

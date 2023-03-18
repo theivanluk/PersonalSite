@@ -1,6 +1,6 @@
 import { APP_BUILD_MANIFEST } from "next/dist/shared/lib/constants";
 import React, { FC, useReducer, useState } from 'react';
-import Layout from "@/components/Layout";
+import Layout from "@/components/Common/Layout";
 
 const Contact_Me: FC = () => {
   const [contactInfo, setContactInfo] = useState();

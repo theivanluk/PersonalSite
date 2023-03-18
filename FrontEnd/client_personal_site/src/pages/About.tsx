@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { FC } from 'react';
 
-import Layout from '@/components/Layout';
+import Layout from '@/components/Common/Layout';
 
 const About: FC = ({}) => {
   return (
