@@ -5,9 +5,25 @@ import { SC_NavBar } from '../Styling/Styled';
 import { useMobileScreen } from '@/hooks/ScreenSize';
 import { HamburgerMenu } from './HamburgerMenu';
 
+const tabLinks = [{
+  url: "/Projects",
+  title: "Projects"
+}, {
+  url: "/Blog",
+  title: "Blog"
+}, {
+  url: "/About",
+  title: "About"
+}, {
+  url: "/Contact_Me",
+  title: "Contact"
+}]
+
 export default function NavBar() {
 
   const mobileScreen = useMobileScreen();
+
+  const tabOptions = tabLinks.map(({url, title}) => <Link href={url}>{title}</Link> );
 
   return (
     <SC_NavBar>
@@ -15,17 +31,11 @@ export default function NavBar() {
       {mobileScreen
         ? <>
           <HamburgerMenu>
-            <Link href="/Projects">Projects</Link>
-            <Link href="Blog">Blog</Link>
-            <Link href="/About">About</Link>
-            <Link href="/Contact_Me">Contact</Link>
+            {tabOptions}
           </HamburgerMenu>
         </>
         : <>
-          <Link href="/Projects">Projects</Link>
-          <Link href="Blog">Blog</Link>
-          <Link href="/About">About</Link>
-          <Link href="/Contact_Me">Contact</Link>
+          {tabOptions}
         </>
       }
     </SC_NavBar>
