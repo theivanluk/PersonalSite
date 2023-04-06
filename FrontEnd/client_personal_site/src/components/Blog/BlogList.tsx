@@ -12,8 +12,9 @@ const BlogList = ({ list = [] }: { list: BlogEntryEntity[] | undefined }) => {
       {
         list.length === 0 ?
         <div>No Content</div> :
-        list.map(({post_title, post_id, picture, blog, date_posted}) =>
+        list.map(({post_title, post_id, picture, blog, date_posted}, index) =>
           <BlogEntry
+            key={`BlgoEntry ${index}`}
             title={post_title}
             id={post_id}
             picture={picture}
