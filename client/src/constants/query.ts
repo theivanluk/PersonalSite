@@ -1,0 +1,1 @@
+export const sanityQuery = (queryType: string): string => `*[_type == "${queryType}"]`
