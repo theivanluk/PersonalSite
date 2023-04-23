@@ -22,7 +22,7 @@ const Navbar = () => {
         )}
         <li className='app__flex p-text'>
           <div />
-          <a href="Ivan Luk Resume.pdf" target='_blank' rel='noreferrer' download="Ivan_Luk_Resume">Download My Resume!</a>
+          <a href="https://github.com/theivanluk/PersonalSite/raw/main/Ivan%20Luk%20Resume.pdf" target='_blank' rel='noreferrer'>Download My Resume!</a>
         </li>
       </ul>
 
