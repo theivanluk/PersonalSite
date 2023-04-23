@@ -20,6 +20,10 @@ const Navbar = () => {
             <a href={`#${link}`}>{link}</a>
           </li>
         )}
+        <li className='app__flex p-text'>
+          <div />
+          <a href="Ivan Luk Resume.pdf" target='_blank' rel='noreferrer' download="Ivan_Luk_Resume">Download My Resume!</a>
+        </li>
       </ul>
 
       <div className='app__navbar-menu'>

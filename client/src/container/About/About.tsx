@@ -27,7 +27,7 @@ const About: React.FC<{}> = (): JSX.Element => {
   return (
     <>
       <h2 className='head-text'>
-        I Know That <span>Good Development</span> <br /> means <span>Good Business</span>
+        A Small <span>Snippet</span> <br /> About <span>Me</span>
       </h2>
 
       <div className='app__profiles'>
