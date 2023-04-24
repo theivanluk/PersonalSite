@@ -12,7 +12,7 @@ const App: React.FC = (): JSX.Element => {
       <About />
       <Work />
       <Skills />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Footer />
     </div>
   );

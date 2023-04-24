@@ -9,12 +9,13 @@ import './Skills.scss';
 import { IExperiencesSanityAPI, ISkillsSanityAPI } from "../../Entities/Skills";
 import { sanityQuery } from "../../constants/query";
 
-
-
-
 const Skills: React.FC = (): JSX.Element => {
   const [skills, setSkills] = useState<ISkillsSanityAPI[]>([]);
   const [experience, setExperience] = useState<IExperiencesSanityAPI[]>([]);
+
+  const sortByYear = (a: IExperiencesSanityAPI, b: IExperiencesSanityAPI): number => {
+    return Number(b.year) - Number(a.year);
+  }
 
   const fetchSkills: () => Promise<void> = useCallback(async (): Promise<void> => {
     try {
@@ -56,7 +57,7 @@ const Skills: React.FC = (): JSX.Element => {
         </motion.div>
 
         <motion.div className="app__skills-exp">
-          {experience.map((experience) => (
+          {experience.sort(sortByYear).map((experience) => (
             <motion.div
                 className="app__skills-exp-item"
                 key={experience.year}>

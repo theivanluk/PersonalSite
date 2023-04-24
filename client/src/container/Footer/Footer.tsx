@@ -50,8 +50,8 @@ const Footer: React.FC<{}> = (): JSX.Element => {
         </div>
 
         <div className='app__footer-card'>
-          <img src={images.mobile} alt="mobile" />
-          <a href="tel: +1 (702) 576-7312" className='p-text'>+1 (702) 576-7312</a>
+          <img src={images.resumeIcon} alt="mobile" />
+          <a href="https://github.com/theivanluk/PersonalSite/raw/main/Ivan%20Luk%20Resume.pdf" target='_blank' rel='noreferrer' className='p-text'>My Resume</a>
         </div>
       </div>
 
@@ -82,4 +82,4 @@ const Footer: React.FC<{}> = (): JSX.Element => {
   )
 }
 
-export default AppWrap(MotionWrap(Footer, "app__footer"), "contact", "app__whitebg");
+export default AppWrap(MotionWrap(Footer, "app__footer"), "contact", "app__primarybg");
