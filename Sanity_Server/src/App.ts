@@ -1,14 +1,22 @@
 import express, { Application, Router } from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { createAboutRouter } from "./Routes/aboutRouter";
+
 import { AboutController } from "./Controllers/aboutController";
 import { SkillsController } from "./Controllers/skillsController";
-import { createSkillsRouter } from "./Routes/skillsRouter";
 import { PortfolioController } from "./Controllers/portfolioController";
+
+import { createAboutRouter } from "./Routes/aboutRouter";
+import { createSkillsRouter } from "./Routes/skillsRouter";
 import { createPortfolioRouter } from "./Routes/portfolioRouter";
+
+import {
+  IAboutController,
+  IPortfolioController,
+  ISkillsController
+} from "./Entities/controllers";
+
 import { IDataAccess } from "./Entities/dataAccess";
-import { IAboutController, IPortfolioController, ISkillsController } from "./Entities/controllers";
 
 export function createApp(dataAccess: IDataAccess): Application {
   const app: Application = express();
