@@ -1,12 +1,12 @@
 import express, { Application, Router } from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { createAboutRouter } from "./Routes/about_router";
+import { createAboutRouter } from "./Routes/aboutRouter";
 import { AboutController } from "./Controllers/aboutController";
 import { SkillsController } from "./Controllers/skillsController";
-import { createSkillsRouter } from "./Routes/skills_router";
+import { createSkillsRouter } from "./Routes/skillsRouter";
 import { PortfolioController } from "./Controllers/portfolioController";
-import { createPortfolioRouter } from "./Routes/portfolio_router";
+import { createPortfolioRouter } from "./Routes/portfolioRouter";
 import { IDataAccess } from "./Entities/dataAccess";
 import { IAboutController, IPortfolioController, ISkillsController } from "./Entities/controllers";
 
