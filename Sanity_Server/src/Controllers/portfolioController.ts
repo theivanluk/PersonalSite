@@ -1,7 +1,14 @@
-export class PortfolioController {
-  private dataAccess: any;
+import { IPortfolioController } from "../Entities/controllers";
+import { IDataAccess } from "../Entities/dataAccess";
 
-  constructor(dataAccess: any) {
+export class PortfolioController implements IPortfolioController {
+  private dataAccess: IDataAccess;
+
+  constructor(dataAccess: IDataAccess) {
     this.dataAccess = dataAccess;
+  }
+
+  async get(): Promise<void> {
+
   }
 }
