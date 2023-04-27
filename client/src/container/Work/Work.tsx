@@ -7,6 +7,7 @@ import "./Work.scss";
 import { IWorkSanityAPI } from "../../Entities/Work";
 import { serverEndpoint } from "../../constants/query";
 import axios from "axios";
+import { urlFor } from "../../client";
 
 const Work: React.FC<{}> = (): JSX.Element => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
@@ -71,7 +72,7 @@ const Work: React.FC<{}> = (): JSX.Element => {
         {filterWork.map((work, index) => (
           <div className="app__work-item app__flex" key={index}>
             <div className="app__work-img app__flex">
-              <img src={work.imgUrl} alt={work.name} />
+              <img src={urlFor(work.imgUrl)} alt={work.name} />
 
               <motion.div
                   whileHover={{ opacity: [0, 1] }}

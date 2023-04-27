@@ -16,8 +16,7 @@ export class AboutController implements IAboutController {
   async get(req: Request, res: Response): Promise<void> {
     try {
       const aboutData: IAboutSanityAPI[] = await this.dataAccess.getAbout();
-      const modifiedData = aboutData.map((data) => { return { ...data, imgUrl: urlFor(data.imgUrl) } });
-      res.status(200).json(modifiedData);
+      res.status(200).json(aboutData);
     } catch(err: unknown) {
       res.status(500).json([]);
     }

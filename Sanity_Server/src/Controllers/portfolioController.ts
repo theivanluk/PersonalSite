@@ -15,8 +15,7 @@ export class PortfolioController implements IPortfolioController {
   async get(req: Request, res: Response): Promise<void> {
     try {
       const portfolioData = await this.dataAccess.getWorks();
-      const modifiedPortfolioData = portfolioData.map((data) => { return { ...data, imgUrl: urlFor(data.imgUrl) } })
-      res.status(200).json(modifiedPortfolioData);
+      res.status(200).json(portfolioData);
     } catch (err: unknown) {
       res.status(500).json([]);
     }

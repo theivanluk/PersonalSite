@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "start": "nodemon dist/index.js",
-    "dev": "concurrently \"npx tsx\" \"nodemon dist/index.js\""
+    "dev": "concurrently \"npx tsc\" \"nodemon dist/index.js\""
   },
   "repository": {
     "type": "git",

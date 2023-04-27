@@ -8,6 +8,7 @@ import './Skills.scss';
 import { IExperiencesSanityAPI, ISkillsSanityAPI } from "../../Entities/Skills";
 import { serverEndpoint } from "../../constants/query";
 import axios from "axios";
+import { urlFor } from "../../client";
 
 const Skills: React.FC = (): JSX.Element => {
   const [skills, setSkills] = useState<ISkillsSanityAPI[]>([]);
@@ -45,7 +46,7 @@ const Skills: React.FC = (): JSX.Element => {
                 className="app__skills-item app__flex"
                 key={skill.name}>
               <div className="app__flex" style={{ backgroundColor: skill.bgColor }}>
-                <img src={skill.icon} alt={skill.name} />
+                <img src={urlFor(skill.icon)} alt={skill.name} />
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>

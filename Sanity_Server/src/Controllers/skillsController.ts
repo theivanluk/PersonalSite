@@ -16,8 +16,7 @@ export class SkillsController implements ISkillsController {
   async getSkills(req: Request, res: Response): Promise<void> {
     try {
       const skillsData = await this.dataAccess.getSkills();
-      const modifiedSkillsData = skillsData.map((data) => { return { ...data, icon: urlFor(data.icon) } })
-      res.status(200).json(modifiedSkillsData);
+      res.status(200).json(skillsData);
     } catch (err: unknown) {
       console.log(err);
       res.status(500).json([]);
