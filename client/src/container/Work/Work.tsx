@@ -3,10 +3,11 @@ import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../Wrapper";
-import { urlFor, client } from "../../client";
+import { urlFor } from "../../client";
 import "./Work.scss";
 import { IWorkSanityAPI } from "../../Entities/Work";
-import { sanityQuery } from "../../constants/query";
+import { serverEndpoint } from "../../constants/query";
+import axios from "axios";
 
 const Work: React.FC<{}> = (): JSX.Element => {
   const [activeFilter, setActiveFilter] = useState<string>('All');
@@ -16,8 +17,7 @@ const Work: React.FC<{}> = (): JSX.Element => {
 
   const fetchWorks: () => Promise<void> = useCallback(async () => {
     try {
-      const query = sanityQuery("works");
-      const data = await client.fetch(query);
+      const { data } = await axios.get(serverEndpoint("portfolio"))
       setWorks(data);
       setFilterWork(data);
     } catch (err: unknown) {

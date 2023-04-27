@@ -2,17 +2,18 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../Wrapper';
-import { urlFor, client } from '../../client';
+import { urlFor } from '../../client';
 import './About.scss';
 import { IAboutSanityAPI } from '../../Entities/About';
+import { serverEndpoint } from '../../constants/query';
+import axios from 'axios';
 
 const About: React.FC<{}> = (): JSX.Element => {
   const [abouts, setAbouts] = useState<IAboutSanityAPI[]>([]);
 
   const fetchAbouts: () => Promise<void> = useCallback(async (): Promise<void> => {
     try {
-      const query: string = '*[_type == "abouts"]';
-      const data: IAboutSanityAPI[] = await client.fetch(query);
+      const { data } = await axios.get(serverEndpoint("about"));
       setAbouts(data);
     } catch(err: unknown) {
       console.log('FETCH ERROR: ', err);

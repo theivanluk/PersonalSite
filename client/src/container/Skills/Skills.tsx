@@ -4,10 +4,11 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 
 import { AppWrap, MotionWrap } from "../../Wrapper";
-import { urlFor, client } from "../../client";
+import { urlFor } from "../../client";
 import './Skills.scss';
 import { IExperiencesSanityAPI, ISkillsSanityAPI } from "../../Entities/Skills";
-import { sanityQuery } from "../../constants/query";
+import { serverEndpoint } from "../../constants/query";
+import axios from "axios";
 
 const Skills: React.FC = (): JSX.Element => {
   const [skills, setSkills] = useState<ISkillsSanityAPI[]>([]);
@@ -19,13 +20,9 @@ const Skills: React.FC = (): JSX.Element => {
 
   const fetchSkills: () => Promise<void> = useCallback(async (): Promise<void> => {
     try {
-      const experiencesQuery = sanityQuery("experiences");
-      const skillsQuery = sanityQuery("skills");
-
-      const data = await client.fetch(experiencesQuery);
-      const skillsData = await client.fetch(skillsQuery);
-
-      setExperience(data);
+      const { data: experienceData } = await axios.get(serverEndpoint("experience"));
+      const { data: skillsData } = await axios.get(serverEndpoint("skills"));
+      setExperience(experienceData);
       setSkills(skillsData);
     } catch (err: unknown) {
       console.log("Error fetchking skills and experiences: ", err);
