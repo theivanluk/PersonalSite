@@ -8,8 +8,8 @@ import './Testimonials.scss';
 import { IBrandsSanityAPI, ITestimonialsSanityAPI } from '../../Entities/Testimonials';
 
 const Testimonials: React.FC<{}> = (): JSX.Element => {
-  const [brands, setBrands] = useState<IBrandsSanityAPI[]>([]);
-  const [testimonials, setTestimonials] = useState<ITestimonialsSanityAPI[]>([]);
+  const [brands] = useState<IBrandsSanityAPI[]>([]);
+  const [testimonials] = useState<ITestimonialsSanityAPI[]>([]);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const handleClick: Function = (index: number): void => {
