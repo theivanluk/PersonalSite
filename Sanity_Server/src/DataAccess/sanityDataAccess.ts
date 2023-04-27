@@ -21,4 +21,8 @@ export default class SanityDataAccess implements IDataAccess {
   async getWorks(): Promise<IWorkSanityAPI[]> {
     return <IWorkSanityAPI[]> await sanityClient.fetch(sanityQuery(sanity_works));
   }
+
+  async postMessage (): Promise<void> {
+
+  }
 }

@@ -5,4 +5,5 @@ export interface IDataAccess {
   getSkills: () => Promise<ISkillsSanityAPI[]>
   getExperience: () => Promise<IExperiencesSanityAPI[]>
   getWorks: () => Promise<IWorkSanityAPI[]>
+  postMessage: () => Promise<void>
 }

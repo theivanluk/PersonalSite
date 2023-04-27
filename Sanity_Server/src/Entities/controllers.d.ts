@@ -12,3 +12,7 @@ export interface IAboutController {
 export interface IPortfolioController {
   get: (req: Request, res: Response) => Promise<void>
 }
+
+export interface IContactController {
+  postMessage: (req: Request, res: Response) => Promise<void>
+}
