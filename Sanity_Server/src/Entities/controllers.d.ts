@@ -1,11 +1,14 @@
+import { Request, Response } from "express"
+
 export interface ISkillsController {
-  get: () => Promise<void>
+  getSkills: (req: Request, res: Response) => Promise<void>
+  getExperience: (req: Request, res: Response) => Promise<void>
 }
 
 export interface IAboutController {
-  get: () => Promise<void>
+  get: (req: Request, res: Response) => Promise<void>
 }
 
 export interface IPortfolioController {
-  get: () => Promise<void>
+  get: (req: Request, res: Response) => Promise<void>
 }
