@@ -7,6 +7,8 @@ export class PortfolioController implements IPortfolioController {
 
   constructor(dataAccess: IDataAccess) {
     this.dataAccess = dataAccess;
+
+    this.get = this.get.bind(this);
   }
 
   async get(req: Request, res: Response): Promise<void> {

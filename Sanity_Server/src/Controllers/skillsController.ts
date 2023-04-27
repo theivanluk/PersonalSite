@@ -7,6 +7,9 @@ export class SkillsController implements ISkillsController {
 
   constructor(dataAccess: IDataAccess) {
     this.dataAccess = dataAccess;
+
+    this.getSkills = this.getSkills.bind(this);
+    this.getExperience = this.getExperience.bind(this);
   }
 
   async getSkills(req: Request, res: Response): Promise<void> {
@@ -14,6 +17,7 @@ export class SkillsController implements ISkillsController {
       const skillsData = await this.dataAccess.getSkills();
       res.status(200).json(skillsData);
     } catch (err: unknown) {
+      console.log(err);
       res.status(500).json([]);
     }
   }
@@ -23,6 +27,7 @@ export class SkillsController implements ISkillsController {
       const experienceData = await this.dataAccess.getExperience();
       res.status(200).json(experienceData);
     } catch (err: unknown) {
+      console.log(err);
       res.status(500).json([]);
     }
   }

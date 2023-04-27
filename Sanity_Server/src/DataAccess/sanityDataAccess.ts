@@ -3,16 +3,14 @@ import { IDataAccess } from "../Entities/dataAccess";
 import { IAboutSanityAPI, IExperiencesSanityAPI, ISkillsSanityAPI, IWorkSanityAPI } from "../Entities/databaseTypes";
 import { sanityClient, sanityQuery } from "../SanityDB/sanityClient";
 
-export class SanityDataAccess implements IDataAccess{
-  constructor() {
-
-  }
+export default class SanityDataAccess implements IDataAccess {
 
   async getAbout(): Promise<IAboutSanityAPI[]> {
     return <IAboutSanityAPI[]> await sanityClient.fetch(sanityQuery(sanity_abouts));
   }
 
   async getSkills(): Promise<ISkillsSanityAPI[]> {
+    console.log('skills');
     return <ISkillsSanityAPI[]> await sanityClient.fetch(sanityQuery(sanity_skills));
   }
 
