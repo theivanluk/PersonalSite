@@ -6,7 +6,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { AppWrap, MotionWrap } from "../../Wrapper";
 import './Skills.scss';
 import { IExperiencesSanityAPI, ISkillsSanityAPI } from "../../Entities/Skills";
-import { serverEndpoint } from "../../constants/query";
+import { serverEndpoint } from "../../constants/strings";
 import axios from "axios";
 import { urlFor } from "../../client";
 

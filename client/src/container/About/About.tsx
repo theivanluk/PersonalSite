@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { AppWrap, MotionWrap } from '../../Wrapper';
 import './About.scss';
 import { IAboutSanityAPI } from '../../Entities/About';
-import { serverEndpoint } from '../../constants/query';
+import { serverEndpoint } from '../../constants/strings';
 import axios from 'axios';
 import { urlFor } from '../../client';
 

@@ -4,8 +4,9 @@ import { easeInOut, motion } from 'framer-motion';
 
 import images from './../../constants/images'
 import './Navbar.scss';
+import { resumeLink } from '../../constants/strings';
 
-const Navbar = () => {
+const Navbar: React.FC<{}> = (): JSX.Element => {
   const [toggle, setToggle] = useState<boolean>(false);
 
   return (
@@ -22,7 +23,7 @@ const Navbar = () => {
         )}
         <li className='app__flex p-text'>
           <div />
-          <a href="https://github.com/theivanluk/PersonalSite/raw/main/Ivan%20Luk%20Resume.pdf" target='_blank' rel='noreferrer'>Download My Resume!</a>
+          <a href={resumeLink} target='_blank' rel='noreferrer'>Download My Resume!</a>
         </li>
       </ul>
 

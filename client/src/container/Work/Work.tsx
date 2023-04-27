@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../Wrapper";
 import "./Work.scss";
 import { IWorkSanityAPI } from "../../Entities/Work";
-import { serverEndpoint } from "../../constants/query";
+import { serverEndpoint } from "../../constants/strings";
 import axios from "axios";
 import { urlFor } from "../../client";
 

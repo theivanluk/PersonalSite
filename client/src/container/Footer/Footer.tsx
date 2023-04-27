@@ -5,7 +5,7 @@ import { AppWrap, MotionWrap } from '../../Wrapper';
 import './Footer.scss';
 import { IFormData } from '../../Entities/Footer';
 import axios from 'axios';
-import { serverEndpoint } from '../../constants/query';
+import { resumeLink, serverEndpoint } from '../../constants/strings';
 
 const initialForm: IFormData = {
   name: '',
@@ -52,7 +52,7 @@ const Footer: React.FC<{}> = (): JSX.Element => {
 
         <div className='app__footer-card'>
           <img src={images.resumeIcon} alt="mobile" />
-          <a href="https://github.com/theivanluk/PersonalSite/raw/main/Ivan%20Luk%20Resume.pdf" target='_blank' rel='noreferrer' className='p-text'>My Resume</a>
+          <a href={resumeLink} target='_blank' rel='noreferrer' className='p-text'>My Resume</a>
         </div>
       </div>
 
