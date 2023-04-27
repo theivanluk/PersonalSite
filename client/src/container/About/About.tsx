@@ -13,6 +13,7 @@ const About: React.FC<{}> = (): JSX.Element => {
 
   const fetchAbouts: () => Promise<void> = useCallback(async (): Promise<void> => {
     try {
+      console.log(serverEndpoint("about"));
       const { data } = await axios.get(serverEndpoint("about"));
       setAbouts(data);
     } catch(err: unknown) {
