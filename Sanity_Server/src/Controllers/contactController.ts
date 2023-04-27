@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { IDataAccess } from "../Entities/dataAccess";
 import { IContactController } from "../Entities/controllers";
-import { FormDataFields, IFormData, IFormDataSanityAPI, allFormDataFields } from "../Entities/databaseTypes";
+import { FormDataFields, IFormDataSanityAPI, allFormDataFields } from "../Entities/databaseTypes";
 
 export class ContactController implements IContactController{
   private dataAccess: IDataAccess;
