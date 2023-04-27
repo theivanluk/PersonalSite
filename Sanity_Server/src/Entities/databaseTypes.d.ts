@@ -14,6 +14,10 @@ export interface IFormDataSanityAPI extends IFormData {
   _type: string
 }
 
+export const allFormDataFields = ['_type', 'name', 'email', 'message'];
+type FormDataTuple = typeof allFormDataFields;
+export type FormDataFields = FormDataTuple[number];
+
 export interface ISkillsSanityAPI {
   name: string,
   icon: string,
