@@ -1,6 +1,7 @@
 import { IDataAccess } from "../Entities/dataAccess";
 import { ISkillsController } from "../Entities/controllers";
 import { Request, Response } from "express";
+import { urlFor } from "../SanityDB/sanityClient";
 
 export class SkillsController implements ISkillsController {
   private dataAccess: IDataAccess;
@@ -15,7 +16,8 @@ export class SkillsController implements ISkillsController {
   async getSkills(req: Request, res: Response): Promise<void> {
     try {
       const skillsData = await this.dataAccess.getSkills();
-      res.status(200).json(skillsData);
+      const modifiedSkillsData = skillsData.map((data) => { return { ...data, icon: urlFor(data.icon) } })
+      res.status(200).json(modifiedSkillsData);
     } catch (err: unknown) {
       console.log(err);
       res.status(500).json([]);
