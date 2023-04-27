@@ -3,7 +3,6 @@ import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../Wrapper";
-import { urlFor } from "../../client";
 import "./Work.scss";
 import { IWorkSanityAPI } from "../../Entities/Work";
 import { serverEndpoint } from "../../constants/query";
@@ -72,7 +71,7 @@ const Work: React.FC<{}> = (): JSX.Element => {
         {filterWork.map((work, index) => (
           <div className="app__work-item app__flex" key={index}>
             <div className="app__work-img app__flex">
-              <img src={urlFor(work.imgUrl)} alt={work.name} />
+              <img src={work.imgUrl} alt={work.name} />
 
               <motion.div
                   whileHover={{ opacity: [0, 1] }}

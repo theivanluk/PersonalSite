@@ -3,9 +3,8 @@ import { motion } from 'framer-motion';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
 import { AppWrap, MotionWrap } from '../../Wrapper';
-import { urlFor, client } from '../../client';
+
 import './Testimonials.scss';
-import { sanityQuery } from '../../constants/query';
 import { IBrandsSanityAPI, ITestimonialsSanityAPI } from '../../Entities/Testimonials';
 
 const Testimonials: React.FC<{}> = (): JSX.Element => {
@@ -19,14 +18,14 @@ const Testimonials: React.FC<{}> = (): JSX.Element => {
 
   const fetchTestimonials: () => Promise<void> = useCallback(async (): Promise<void> => {
     try {
-      const testimonialsQuery: string = sanityQuery("testimonials");
-      const brandsQuery: string = sanityQuery("brands");
+      // const testimonialsQuery: string = sanityQuery("testimonials");
+      // const brandsQuery: string = sanityQuery("brands");
 
-      const testimonialsData: ITestimonialsSanityAPI[] = await client.fetch(testimonialsQuery);
-      const brandsData: IBrandsSanityAPI[] = await client.fetch(brandsQuery);
+      // const testimonialsData: ITestimonialsSanityAPI[] = await client.fetch(testimonialsQuery);
+      // const brandsData: IBrandsSanityAPI[] = await client.fetch(brandsQuery);
 
-      setTestimonials(testimonialsData);
-      setBrands(brandsData);
+      // setTestimonials(testimonialsData);
+      // setBrands(brandsData);
     } catch (err: unknown) {
       console.log("Error fetching testimonials and brands: ", err);
     }
@@ -41,7 +40,7 @@ const Testimonials: React.FC<{}> = (): JSX.Element => {
       {!!(testimonials.length) && (
         <>
           <div className='app__testimonial-item app__flex'>
-            <img src={urlFor(currentTestimonial?.imageurl)} alt="testimonials" />
+            <img src={currentTestimonial.imageurl} alt="testimonials" />
             <div className='app__testimonial-content'>
               <p className='p-text'>{currentTestimonial.feedback}</p>
               <div>
@@ -69,7 +68,7 @@ const Testimonials: React.FC<{}> = (): JSX.Element => {
               whileInView={{ opacity: [0, 1]}}
               transition={{ duration: 0.5, type: 'tween' }}
               key={brand._id}>
-            <img src={urlFor(brand.imgUrl)} alt={brand.name} />
+            <img src={brand.imgUrl} alt={brand.name} />
           </motion.div>
         ))}
       </div>

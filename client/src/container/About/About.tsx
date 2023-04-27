@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../Wrapper';
-import { urlFor } from '../../client';
 import './About.scss';
 import { IAboutSanityAPI } from '../../Entities/About';
 import { serverEndpoint } from '../../constants/query';
@@ -39,7 +38,7 @@ const About: React.FC<{}> = (): JSX.Element => {
               transition={{ duration: 0.5, type: 'tween' }}
               className='app__profile-item'
               key={about.title + index}>
-            <img src={urlFor(about.imgUrl)} alt={about.title} />
+            <img src={about.imgUrl} alt={about.title} />
             <h2 className='bold-text' style={{ marginTop: 20 }}>{about.title}</h2>
             <p className='p-text' style={{ marginTop: 10 }}>{about.description}</p>
           </motion.div>

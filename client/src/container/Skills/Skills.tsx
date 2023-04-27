@@ -4,7 +4,6 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 
 import { AppWrap, MotionWrap } from "../../Wrapper";
-import { urlFor } from "../../client";
 import './Skills.scss';
 import { IExperiencesSanityAPI, ISkillsSanityAPI } from "../../Entities/Skills";
 import { serverEndpoint } from "../../constants/query";
@@ -46,7 +45,7 @@ const Skills: React.FC = (): JSX.Element => {
                 className="app__skills-item app__flex"
                 key={skill.name}>
               <div className="app__flex" style={{ backgroundColor: skill.bgColor }}>
-                <img src={urlFor(skill.icon)} alt={skill.name} />
+                <img src={skill.icon} alt={skill.name} />
               </div>
               <p className="p-text">{skill.name}</p>
             </motion.div>

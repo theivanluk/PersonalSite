@@ -2,9 +2,10 @@ import React, { ChangeEvent, ChangeEventHandler, MouseEvent, MouseEventHandler, 
 
 import images from '../../constants/images';
 import { AppWrap, MotionWrap } from '../../Wrapper';
-import { client } from '../../client';
 import './Footer.scss';
 import { IFormData } from '../../Entities/Footer';
+import axios from 'axios';
+import { serverEndpoint } from '../../constants/query';
 
 const initialForm: IFormData = {
   name: '',
@@ -32,7 +33,7 @@ const Footer: React.FC<{}> = (): JSX.Element => {
       email,
       message
     }
-    const data = await client.create(contact);
+    const data = await axios.post(serverEndpoint("contact"), contact);
     console.log(data);
     setLoading(false);
     setIsFormSubmitted(true);
