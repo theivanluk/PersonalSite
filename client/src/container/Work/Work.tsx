@@ -54,7 +54,7 @@ const Work: React.FC<{}> = (): JSX.Element => {
 
       {/* Filter Work Selection Bar */}
       <div className="app__work-filter">
-        {['UI/UX', 'Backend', 'Mobile App', 'React JS', 'All'].map((work, index) => (
+        {['UI/UX', 'Backend', 'React JS', 'All'].map((work, index) => (
           <div
               key={index}
               onClick={() => handleWorkFilter(work)}
